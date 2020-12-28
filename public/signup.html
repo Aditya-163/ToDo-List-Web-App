@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Sign Up!</title>
+  <link rel="stylesheet" href="stylesSignup.css">
+</head>
+
+<body>
+  <h1 style="text-align: center">Sign up!</h1>
+    <div class="inForm"> <!-- inForm stands for : Sign-up form -->
+      <form action="" method="post">
+        <table>
+          <tr>
+            <td><label>Name:</label></td>
+            <td><input type="text" name="name"></td>
+          </tr>
+          <tr>
+            <td><label>Password:</label></td>
+            <td><input type="password" name="pw"></td>
+          </tr>
+          <tr>
+            <td><label>Handle:</label></td>
+            <td><input type="text" name="handle"></td>
+          </tr>
+        </table>
+        <br>
+        <input type="submit" value="Submit!">
+      </form>
+    </div>
+
+  <!-- Include the JS file! -->
+  <!-- You are basically telling the browser to search for this file
+  in the "public" directory!
+  -->
+  <script src="logicSignup.js"></script>
+</body>
+
+</html>
