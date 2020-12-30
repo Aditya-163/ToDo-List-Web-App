@@ -7,26 +7,27 @@
 </head>
 
 <body>
-  <h1 style="text-align: center">Sign up!</h1>
     <div class="inForm"> <!-- inForm stands for : Sign-up form -->
-      <form action="" method="post">
+      <h1 style="text-align: center">Sign up!</h1>
+      <p id="wrongSignUp"></p>
+<!--      <form action="" method="post"> -->
         <table>
           <tr>
             <td><label>Name:</label></td>
-            <td><input type="text" name="name"></td>
+            <td><input type="text" id="name"></td>
           </tr>
           <tr>
             <td><label>Password:</label></td>
-            <td><input type="password" name="pw"></td>
+            <td><input type="password" id="pw"></td>
           </tr>
           <tr>
             <td><label>Handle:</label></td>
-            <td><input type="text" name="handle"></td>
+            <td><input type="text" id="handle"></td>
           </tr>
         </table>
         <br>
-        <input type="submit" value="Submit!">
-      </form>
+        <input type="button" id="signUp" value="Submit!">
+<!--      </form> -->
     </div>
 
   <!-- Include the JS file! -->

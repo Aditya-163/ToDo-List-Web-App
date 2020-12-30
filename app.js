@@ -113,7 +113,7 @@ app.post("/signUp",function(req,res)
           res.send("This handle already exists!");
         else
         {
-            // If the data can be used to signup some one then the below code works!
+            // If the data can be used to signup someone then the below code works!
             const inputNameInfo = new nameInfo({handle: inputHandle, name: inputName});
             const inputLoginInfo = new loginInfo({handle: inputHandle, pw: inputPw});
             console.log("Stage2-No Error!");
