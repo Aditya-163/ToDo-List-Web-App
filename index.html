@@ -8,25 +8,26 @@
 </head>
 
 <body>
-  <h1 style="text-align: center"> Welcome to the ToDo list app! </h1>
   <div class="inForm"> <!-- inForm stands for : Sign-up form -->
-    <form action="" method="post">
-      <table>
-        <tr>
-          <td><label>Handle:</label></td>
-          <td><input type="text" name="handle"></td>
-        </tr>
-        <tr>
-          <td><label>Password:</label></td>
-          <td><input type="password" name="pw"></td>
-        </tr>
-      </table>
-      <br>
-      <input type="submit" value="Submit!">
-      <br>
-      <p>New user?</p>
-      <a href="signup.html">Sign up!</a>
-    </form>
+  <h1> Welcome to the ToDo list app! </h1>
+  <p id="wrongSignIn"></p>
+<!--  <form id="formSignIn" method="post"> -->
+        <table>
+          <tr>
+            <td><label>Handle:</label></td>
+            <td><input id="handle" type="text" name="handle"></td>
+          </tr>
+          <tr>
+            <td><label>Password:</label></td>
+            <td><input id="password" type="password" name="pw"></td>
+          </tr>
+        </table>
+        <br>
+        <input type="button" id="signIn" value="Submit!">
+        <br>
+        <p>New user?</p>
+        <a href="signup.html">Sign up!</a>
+<!--  </form> -->
   </div>
   <!-- Include the JS file! -->
   <!-- You are basically telling the browser to search for this file

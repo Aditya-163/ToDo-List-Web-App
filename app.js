@@ -52,7 +52,7 @@ app.get("/",function(req,res)
   res.sendFile(__dirname+"/index.html");
 });
 
-app.get("/signup.html",function(req,res)
+app.get("/signup",function(req,res)
 {
   res.sendFile(__dirname+"/public/signup.html");
 });
@@ -79,15 +79,15 @@ app.post("/",function(req,res)
       console.log("The result of login is: ");
       console.log(result);
       if(result)
-        res.send("You have logged in!");
+        res.send("ok");
       else
-        res.send("Either the handle or password is incorrect!");
+        res.send("notOk");
     }
   });
 });
 //
 // Sign up request!
-app.post("/signup.html",function(req,res)
+app.post("/signUp",function(req,res)
 {
   // Log info!
   console.log("The information entered to sign-up is: ");

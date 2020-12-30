@@ -1,17 +1,15 @@
-h1
-{
-  text-align: center;
-  font-family: Arial;
-}
-
 .inForm
 {
   text-align: center;
   font-family: Arial;
 }
-
 table
 {
   margin-left: auto;
   margin-right: auto;
+}
+#wrongSignIn
+{
+  display: none;
+  color: red;
 }
