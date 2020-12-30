@@ -51,7 +51,10 @@ app.get("/",function(req,res)
 {
   res.sendFile(__dirname+"/index.html");
 });
-
+app.get("/signin",function(req,res)
+{
+  res.sendFile(__dirname+"/index.html");
+});
 app.get("/signup",function(req,res)
 {
   res.sendFile(__dirname+"/public/signup.html");
