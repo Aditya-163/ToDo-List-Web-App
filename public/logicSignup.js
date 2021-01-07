@@ -1,3 +1,4 @@
+/* Remove this comment to see the previous code!
 document.getElementById("signUp").addEventListener("click",function()
 {
   var xhttp = new XMLHttpRequest();
@@ -35,3 +36,4 @@ document.getElementById("signUp").addEventListener("click",function()
   const handleInput = document.getElementById("handle").value;
   xhttp.send("name="+nameInput+"&"+"pw="+passwordInput+"&"+"handle="+handleInput);
 });
+*/

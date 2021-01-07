@@ -4,30 +4,37 @@
   <meta charset="utf-8">
   <title>Sign Up!</title>
   <link rel="stylesheet" href="stylesSignup.css">
+  <link rel="shortcut icon" href="#">
 </head>
 
 <body>
     <div class="inForm"> <!-- inForm stands for : Sign-up form -->
-      <h1 style="text-align: center">Sign up!</h1>
-      <p id="wrongSignUp"></p>
-<!--      <form action="" method="post"> -->
+      <h1>Signup!</h1>
+
+      <% if(someMsg === 1) { %>
+        <p id="wrongSignup"><%= message %></p>
+      <% } %>
+    
+      <form id="formSignup" action="/signup" method="post">
+
         <table>
           <tr>
             <td><label>Name:</label></td>
-            <td><input type="text" id="name"></td>
+            <td><input type="text" name="name"></td>
           </tr>
           <tr>
             <td><label>Password:</label></td>
-            <td><input type="password" id="pw"></td>
+            <td><input type="password" name="pw"></td>
           </tr>
           <tr>
             <td><label>Handle:</label></td>
-            <td><input type="text" id="handle"></td>
+            <td><input type="text" name="handle"></td>
           </tr>
         </table>
         <br>
-        <input type="button" id="signUp" value="Submit!">
-<!--      </form> -->
+
+        <input type="submit" id="signup" value="Signup!">
+      </form>
     </div>
 
   <!-- Include the JS file! -->

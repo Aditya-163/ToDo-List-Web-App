@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>To Do</title>
+  <link rel="stylesheet" href="stylesIndex.css">
+  <link rel="shortcut icon" href="#">
+</head>
+
+<body>
+  <div class="inForm"> <!-- inForm stands for : Sign-up form -->
+    <h1> Welcome to the ToDo list app! </h1>
+
+    <% if(someMsg === 1) { %>
+      <p id="wrongSignIn"><%= message %></p>
+    <% } %>
+
+    <form id="formSignIn" action="/" method="post"> 
+
+      <table>
+        <tr>
+          <td><label>Handle:</label></td>
+          <td><input id="handle" type="text" name="handle"></td>
+        </tr>
+        <tr>
+          <td><label>Password:</label></td>
+          <td><input id="password" type="password" name="pw"></td>
+        </tr>
+      </table>
+
+      <br>
+      <input type="submit" id="signIn" value="Login">
+      <br>
+
+      <!-- Look at this part of the code! -->
+      <p>New user?</p> 
+      <a href="/signup">Sign up!</a>
+      <!-- -->
+    </form>
+  </div>
+  <!-- Include the JS file! -->
+  <!-- You are basically telling the browser to search for this file
+  in the "public" directory! -->
+  <script src="logicIndex.js"></script>
+</body>
+
+</html>

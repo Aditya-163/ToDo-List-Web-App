@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title> ToDo-List! </title>
+  <link rel="stylesheet" href="stylesHome.css">
+  <link rel="shortcut icon" href="#">
+</head>
+
+<body>
+  <div id="content">
+    <h1>Welcome, <%= userHandle %>!</h1>
+    <a href="/">Logout!</a>
+    <p> Here are your lists! </p>
+    
+    <div id="listItems">
+    <%  for(var i=0; i<userLists.length;i++) %>
+    <%  { %>
+          <p> <%= userLists[i-1] %> </p>
+    <%  } %>
+    </div>
+
+  </div>
+  <!-- Include the JS file! -->
+  <!-- You are basically telling the browser to search for this file
+  in the "public" directory! -->
+  <script src="logicHome.js"></script>
+</body>
+
+</html>
