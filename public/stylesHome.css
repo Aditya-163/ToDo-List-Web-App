@@ -3,3 +3,13 @@
     text-align: center;
     font-family: Arial;
 }
+
+#tagLine
+{
+    color: blue;
+}
+
+#curHandle
+{
+    color: red;
+}

@@ -16,7 +16,7 @@ app.use(express.static("public"));
 //------------------------------------------------------------------------------
 // Connecting to the database!
 //------------------------------------------------------------------------------
-mongoose.connect("mongodb://localhost:27017/todoDB",{useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect("mongodb://localhost:27017/todoDB",{useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false});
 // First Schema!
 const loginSchema = new mongoose.Schema({
   handle: String,
@@ -87,6 +87,9 @@ app.post("/",function(req,res1)
             res1.render("index.ejs",{someMsg: 1, message: "There seems to be some error! Please try later!"});
           else
           {
+            console.log("The folowing content has been rendered:");
+            console.log(res3[0].handle);
+            console.log(res3[0].lists);
             res1.render("home.ejs",{userHandle: res3[0].handle,userLists: res3[0].lists});
           }
         });
@@ -164,6 +167,44 @@ app.post("/signup",function(req,res1)
       }
   });
 });
+// Route for changing the content in the database - the list items in the todo list!
+app.post("/update",function(req,res1)
+{
+  // Update info!
+  console.log("The information entered for update is: ");
+  console.log("Handle: "+req.body.handle);
+  console.log("New List entry: "+req.body.newEntry);
+  var inputHandle = req.body.handle;
+  var inputNewEntry = req.body.newEntry;
+  // Finding the record in the DB!
+  listInfo.findOne({handle: inputHandle},function(err1,res2)
+  {
+    if(err1)
+      res1.send("notOk");
+    else if(res2 != null) // Do this type of handling at other places too!
+    {
+      console.log("Found an entry with the given handle!");
+      console.log("The result of find is:");
+      console.log(res2);
+      var oldList = res2.lists;
+      oldList.push(inputNewEntry);
+      // Updating the DB!
+      listInfo.findOneAndUpdate({handle: inputHandle},{lists: oldList},function(err2,res3)
+      {
+        if(err2)
+          res1.send("notOk");
+        else
+        {
+          console.log("The update is successful!");
+          res1.send("ok");
+        }
+      });
+    }
+    else
+      res1.send("notOk");
+  });
+});
+//
 //------------------------------------------------------------------------------
 // Server is listening!
 //------------------------------------------------------------------------------

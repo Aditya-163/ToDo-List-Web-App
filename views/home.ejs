@@ -10,17 +10,19 @@
 
 <body>
   <div id="content">
-    <h1>Welcome, <%= userHandle %>!</h1>
+    <h1>Welcome <span id="curHandle"><%= userHandle %><span></h1>
     <a href="/">Logout!</a>
-    <p> Here are your lists! </p>
+    <p id="tagLine"> Here are your lists: </p>
+    
+    <!-- Code for adding a new lsit item! -->
+    <input type="text" id="newEntryField" name="newEntry">
+    <input type="button" id="newEntryBtn" value="+">
     
     <div id="listItems">
-    <%  for(var i=0; i<userLists.length;i++) %>
-    <%  { %>
+    <%  for(var i=0; i<userLists.length; i++) { %> <!-- It is imporatnt that you put this brace "{" in this line itself! -->
           <p> <%= userLists[i-1] %> </p>
     <%  } %>
     </div>
-
   </div>
   <!-- Include the JS file! -->
   <!-- You are basically telling the browser to search for this file
