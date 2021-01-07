@@ -19,8 +19,8 @@
     <input type="button" id="newEntryBtn" value="+">
     
     <div id="listItems">
-    <%  for(var i=0; i<userLists.length; i++) { %> <!-- It is imporatnt that you put this brace "{" in this line itself! -->
-          <p> <%= userLists[i-1] %> </p>
+    <%  for(var item of userLists) { %> 
+          <p> <%= item %> </p>
     <%  } %>
     </div>
   </div>
