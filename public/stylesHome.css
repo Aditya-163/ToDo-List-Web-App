@@ -3,13 +3,25 @@
     text-align: center;
     font-family: Arial;
 }
-
+.center 
+{
+    margin-left: auto;
+    margin-right: auto;
+}
+#curHandle
+{
+    color: red;
+}
+.normal
+{
+    text-decoration: none;
+}
+.stikeOff
+{
+    text-decoration: line-through;
+}
 #tagLine
 {
     color: blue;
 }
 
-#curHandle
-{
-    color: red;
-}

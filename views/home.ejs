@@ -10,6 +10,7 @@
 
 <body>
   <div id="content">
+
     <h1>Welcome <span id="curHandle"><%= userHandle %><span></h1>
     <a href="/">Logout!</a>
     <p id="tagLine"> Here are your lists: </p>
@@ -17,12 +18,19 @@
     <!-- Code for adding a new lsit item! -->
     <input type="text" id="newEntryField" name="newEntry">
     <input type="button" id="newEntryBtn" value="+">
-    
-    <div id="listItems">
-    <%  for(var item of userLists) { %> 
-          <p> <%= item %> </p>
-    <%  } %>
-    </div>
+    <br>
+    <br>
+
+    <table id="listItems" class="center">
+      <%  for(var item of userLists) { %> 
+        <% if(item.status) { %>
+          <tr><td><input type="button" class="toggle" value="-" id= <%= item.idx %> ></td> <td class="stikeOff"><%= item.listItem %></td></tr> 
+        <% } %>
+        <% if(!item.status) { %> <!-- Do not use else - coz it doesn't exist-->
+          <tr><td><input type="button" class="toggle" value="-" id= <%= item.idx %> ></td> <td class="normal"><%= item.listItem %></td></tr>
+        <% } %> 
+      <%  } %>
+    </table>
   </div>
   <!-- Include the JS file! -->
   <!-- You are basically telling the browser to search for this file

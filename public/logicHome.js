@@ -12,11 +12,17 @@ document.getElementById("newEntryBtn").addEventListener("click",function()
             {
                 // This is the response of the server!
                 console.log(this.responseText);
-                if(this.responseText === "ok") // The response is either "ok" -- i.e. Successfully updated the DB!
-                    document.getElementById("listItems").innerHTML += "<p>"+entry+"</p>";
+                if(this.responseText != "notOk") // The response is either a number (a string!)-- i.e. Successfully updated the DB!
+                {
+                    console.log("The HTML element added is: ");
+                    console.log('<tr><td><input type="button" class="toggle" value="-" id="'+this.responseText+'"></td> <td class="normal">'+entry+'</td></tr>');
+
+                    document.getElementById("listItems").innerHTML += 
+                    '<tr><td><input type="button" class="toggle" value="-" id="'+this.responseText+'"></td> <td class="normal">'+entry+'</td></tr>';
+                }
             }
         };
-        xhttp.open("POST", "http://localhost:3000/update", true);
+        xhttp.open("POST", "http://localhost:3000/add", true);
         // The below line of code is necessay because we must tell the type of
         // content we are sending!
         xhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
@@ -24,3 +30,4 @@ document.getElementById("newEntryBtn").addEventListener("click",function()
         xhttp.send("handle="+handleInput+"&"+"newEntry="+entry);
     }
 });
+

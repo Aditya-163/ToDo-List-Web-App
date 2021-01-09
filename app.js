@@ -28,7 +28,12 @@ const loginInfo = mongoose.model("loginInfo", loginSchema);
 // Second Schema!
 const listSchema  = new mongoose.Schema({
   handle: String,
-  lists: [String]
+  lists: 
+  [{
+    listItem: String, // This is a string of list items!
+    idx: String,
+    status: Boolean
+  }]
 });
 const listInfo = mongoose.model("listInfo",listSchema);
 //
@@ -90,6 +95,9 @@ app.post("/",function(req,res1)
             console.log("The folowing content has been rendered:");
             console.log(res3[0].handle);
             console.log(res3[0].lists);
+            // console.log(res3[0].lists.listItem);
+            // console.log(res3[0].lists.idx);
+            // console.log(res3[0].lists.status);
             res1.render("home.ejs",{userHandle: res3[0].handle,userLists: res3[0].lists});
           }
         });
@@ -168,7 +176,7 @@ app.post("/signup",function(req,res1)
   });
 });
 // Route for changing the content in the database - the list items in the todo list!
-app.post("/update",function(req,res1)
+app.post("/add",function(req,res1)
 {
   // Update info!
   console.log("The information entered for update is: ");
@@ -187,7 +195,13 @@ app.post("/update",function(req,res1)
       console.log("The result of find is:");
       console.log(res2);
       var oldList = res2.lists;
-      oldList.push(inputNewEntry);
+      var oldLen = oldList.length;
+      var newEntryObj = {listItem: inputNewEntry,idx: oldLen.toString(), status: false};
+
+      console.log("the new object that's pushed is: ");
+      console.log(newEntryObj);
+
+      oldList.push(newEntryObj);
       // Updating the DB!
       listInfo.findOneAndUpdate({handle: inputHandle},{lists: oldList},function(err2,res3)
       {
@@ -196,7 +210,7 @@ app.post("/update",function(req,res1)
         else
         {
           console.log("The update is successful!");
-          res1.send("ok");
+          res1.send(oldLen.toString());
         }
       });
     }
