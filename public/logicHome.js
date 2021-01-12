@@ -15,10 +15,10 @@ document.getElementById("newEntryBtn").addEventListener("click",function()
                 if(this.responseText != "notOk") // The response is either a number (a string!)-- i.e. Successfully updated the DB!
                 {
                     console.log("The HTML element added is: ");
-                    console.log('<tr><td><input type="button" class="toggle" value="-" id="'+this.responseText+'"></td> <td class="normal">'+entry+'</td></tr>');
+                    console.log('<tr><td><input type="submit" class="toggle" name="idx" value="'+this.responseText+'"></td> <td class="normal">'+entry+'</td></tr>');
 
                     document.getElementById("listItems").innerHTML += 
-                    '<tr><td><input type="button" class="toggle" value="-" id="'+this.responseText+'"></td> <td class="normal">'+entry+'</td></tr>';
+                    '<tr><td><input type="submit" class="toggle" name="idx" value="'+this.responseText+'"></td> <td class="normal">'+entry+'</td></tr>';
                 }
             }
         };

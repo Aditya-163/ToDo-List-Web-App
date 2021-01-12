@@ -218,7 +218,52 @@ app.post("/add",function(req,res1)
       res1.send("notOk");
   });
 });
-//
+// This is the code for toggling the striking-off feature!
+app.post("/toggle",function(req,res1)
+{
+  // Update info!
+  console.log("The information entered for update is: ");
+  console.log(req.body);
+  var inputHandle = req.body.handle;
+  var inputIdx = parseInt(req.body.idx);
+  console.log("Handle:");
+  console.log(req.body.handle);
+  console.log("Entry index:");
+  console.log(req.body.idx);
+  // Finding the record in the DB!
+  listInfo.findOne({handle: inputHandle},function(err1,res2)
+  {
+    if(err1)
+      res1.redirect("/");
+    else if(res2 != null) // Do this type of handling at other places too!
+    {
+      console.log("Found an entry with the given handle!");
+      console.log("The result of find is:");
+      console.log(res2);
+      var oldList = res2.lists;
+      // The update!
+      if(oldList[inputIdx].status)
+        oldList[inputIdx].status = false;
+      else
+        oldList[inputIdx].status = true;
+      console.log("The updated list item: ");
+      console.log(oldList[inputIdx]);
+      // Updating the DB!
+      listInfo.findOneAndUpdate({handle: inputHandle},{lists: oldList},function(err2,res3)
+      {
+        if(err2)
+          res1.redirect("/");
+        else
+        {
+          console.log("The update is successful!");
+          res1.render("home.ejs",{userHandle: res2.handle,userLists: res2.lists});
+        }
+      });
+    }
+    else
+      res1.redirect("/");
+  });
+});
 //------------------------------------------------------------------------------
 // Server is listening!
 //------------------------------------------------------------------------------

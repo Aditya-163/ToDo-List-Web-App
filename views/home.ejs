@@ -20,17 +20,19 @@
     <input type="button" id="newEntryBtn" value="+">
     <br>
     <br>
-
-    <table id="listItems" class="center">
-      <%  for(var item of userLists) { %> 
-        <% if(item.status) { %>
-          <tr><td><input type="button" class="toggle" value="-" id= <%= item.idx %> ></td> <td class="stikeOff"><%= item.listItem %></td></tr> 
-        <% } %>
-        <% if(!item.status) { %> <!-- Do not use else - coz it doesn't exist-->
-          <tr><td><input type="button" class="toggle" value="-" id= <%= item.idx %> ></td> <td class="normal"><%= item.listItem %></td></tr>
-        <% } %> 
-      <%  } %>
-    </table>
+    <form action="/toggle" method="POST">
+      <input type="hidden" name="handle" value=<%=userHandle%> >
+      <table id="listItems" class="center">
+        <%  for(var item of userLists) { %> 
+          <% if(item.status) { %>
+            <tr><td><input type="submit" class="toggle" name="idx" value=<%= item.idx %> ></td> <td class="stikeOff"><%= item.listItem %></td></tr> 
+          <% } %>
+          <% if(!item.status) { %> <!-- Do not use "else" - coz it doesn't exist-->
+            <tr><td><input type="submit" class="toggle" name="idx" value=<%= item.idx %> ></td> <td class="normal"><%= item.listItem %></td></tr>
+          <% } %> 
+        <%  } %>
+      </table>
+    </form>
   </div>
   <!-- Include the JS file! -->
   <!-- You are basically telling the browser to search for this file
