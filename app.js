@@ -219,6 +219,51 @@ app.post("/add",function(req,res1)
   });
 });
 //
+// Route for toggling the status of a list item in the database!
+app.post("/toggle",function(req,res1)
+{
+  // Update info!
+  console.log("The information entered for update is: ");
+  console.log("Handle: "+req.body.handle);
+  console.log("Index of the list item to toggle: "+req.body.idx);
+  var inputHandle = req.body.handle;
+  var inputListIdx = parseInt(req.body.idx); // This is a number!
+  // Finding the record in the DB!
+  listInfo.findOne({handle: inputHandle},function(err1,res2)
+  {
+    if(err1)
+      res1.send("notOk");
+    else if(res2 != null) // Do this type of handling at other places too!
+    {
+      console.log("Found an entry with the given handle!");
+      console.log("The result of find is:");
+      console.log(res2);
+      var oldList = res2.lists;
+      console.log("The previous value of status at the index: "+oldList[inputListIdx].status);
+
+      if(oldList[inputListIdx].status)
+        oldList[inputListIdx].status = false;
+      else
+        oldList[inputListIdx].status = true;
+      
+      console.log("The new value of status at the index: "+oldList[inputListIdx].status);
+      // Updating the DB!
+      listInfo.findOneAndUpdate({handle: inputHandle},{lists: oldList},function(err2,res3)
+      {
+        if(err2)
+          res1.send("notOk");
+        else
+        {
+          console.log("The update is successful!");
+          res1.send("ok");
+        }
+      });
+    }
+    else
+      res1.send("notOk");
+  });
+});
+//
 //------------------------------------------------------------------------------
 // Server is listening!
 //------------------------------------------------------------------------------

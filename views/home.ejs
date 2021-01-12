@@ -24,10 +24,10 @@
     <table id="listItems" class="center">
       <%  for(var item of userLists) { %> 
         <% if(item.status) { %>
-          <tr><td><input type="button" class="toggle" value="-" id= <%= item.idx %> ></td> <td class="stikeOff"><%= item.listItem %></td></tr> 
+          <tr class="toggle" id= <%= item.idx %>><td><input type="button" class="" value="-"> </td> <td class="strikeOff"><%= item.listItem %></td></tr>
         <% } %>
         <% if(!item.status) { %> <!-- Do not use else - coz it doesn't exist-->
-          <tr><td><input type="button" class="toggle" value="-" id= <%= item.idx %> ></td> <td class="normal"><%= item.listItem %></td></tr>
+          <tr class="toggle" id= <%= item.idx %>><td><input type="button" class="" value="-"> </td> <td class="normal"><%= item.listItem %></td></tr>
         <% } %> 
       <%  } %>
     </table>
